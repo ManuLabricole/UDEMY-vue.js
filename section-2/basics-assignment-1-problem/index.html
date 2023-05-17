@@ -23,10 +23,10 @@
     <p>Favorite Number: RANDOM NUMBER BETWEEN 0 AND 1 : {{ randomNum()}} </p>
     <div>
       <!-- 5) Display some image you found via Google -->
-      <img :src="vueImage" />
+      <img v-bind:src="vueImage" />
     </div>
     <!-- 6) Prepopulate the input field with your name via the "value" attribute -->
-    <input type="text" :value="name" />
+    <input type="text" v-bind:value="name" />
   </section>
 </body>
 
