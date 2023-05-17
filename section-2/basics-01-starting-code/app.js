@@ -11,13 +11,19 @@ const app = Vue.createApp({
         return {
             courseGoalA: 'Finish the course and learn Vue!',
             courseGoalB: 'Master Vue and build amazing apps!',
+            courseGoalC: '<p> tada h2</p>',
             vueLink: 'https://vuejs.org/'
         };
     },
+    // methods is an object
+    // methods is a special property name
     methods: {
         outputGoal() {
             const randomNumber = Math.random();
             if (randomNumber < 0.5) {
+                // Here this is the Vue instance
+                // We can access any data we defined in data()
+
                 return this.courseGoalA;
             } else {
                 return this.courseGoalB;
