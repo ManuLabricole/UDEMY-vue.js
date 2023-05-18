@@ -7,17 +7,23 @@ const app = Vue.createApp({
   },
   methods: {
     setName(event) {
-      this.name = event.target.value
+      this.name = event.target.value;
     },
     add(num) {
       this.counter = this.counter + num;
     },
     reduce(num) {
       this.counter = this.counter - num;
-      // this.counter--;
     },
     resetName() {
       this.name = '';
+    },
+    outputFullName() {
+      console.log('Running again...');
+      if (this.name === '') {
+        return '';
+      }
+      return this.name + ' ' + 'Santos';
     }
   }
 });
