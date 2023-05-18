@@ -24,9 +24,7 @@ const app = Vue.createApp({
             } else {
                 return this.number;
             }
-
         }
-
     },
 
     methods: {
