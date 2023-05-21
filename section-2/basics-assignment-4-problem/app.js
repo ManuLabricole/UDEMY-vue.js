@@ -4,7 +4,8 @@ const app = Vue.createApp({
     data() {
         return {
             style: "",
-            toggled:false
+            toggled:false,
+            bgColor:"red"
         }
     },
 
@@ -28,7 +29,7 @@ const app = Vue.createApp({
         toggleParagraph() {
             console.log("Toggle")
             this.toggled = !this.toggled
-        }
+        },
     },
 });
 

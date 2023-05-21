@@ -23,8 +23,8 @@
     <button @click="toggleParagraph">Toggle Paragraph</button>
 
     <!-- 3) Add dynamic inline styling to the below paragraph and let the user enter a background-color -->
-    <input type="text" />
-    <p :style="{isToggled}">Style me inline!</p>
+    <input type="text" v-model="bgColor"/>
+    <p :style="{backgroundColor : bgColor}">Style me inline!</p>
   </section>
 </body>
 
