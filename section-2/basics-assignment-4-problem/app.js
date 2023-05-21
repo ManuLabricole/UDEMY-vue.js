@@ -9,24 +9,12 @@ const app = Vue.createApp({
     },
 
     computed: {
-        computedClass() {
-            if (this.style==="user1") {
-                return "user1"
-            } else if (this.style==="user2") {
-                return "user2"
-            } else {
-                console.log("No class")
-                return ""
-            }
-
-        },
-
-        isToggled() {
-            if (this.toggled) {
-                return "visible"
-            }
-            else {
-                return "hidden"
+        paraClasses() {
+            return {
+                user1: this.style === "user1",
+                user2: this.style === "user2",
+                visible: this.toggled,
+                hidden: !this.toggled
             }
         }
     },
@@ -36,6 +24,10 @@ const app = Vue.createApp({
             this.style = e.target.value
             console.log("KeyDown")
 
+        },
+        toggleParagraph() {
+            console.log("Toggle")
+            this.toggled = !this.toggled
         }
     },
 });
