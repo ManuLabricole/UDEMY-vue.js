@@ -20,7 +20,7 @@
     <!-- The entered class should be added to the below paragraph -->
     <input type="text" @keydown.enter="onKeyDown" :value="style"/>
     <!-- (available classes: "user1", "user2") -->
-    <p>
+    <p :class="computedClass">
       Style me! {{ style }}
     </p>
     <button>Toggle Paragraph</button>
@@ -29,7 +29,7 @@
 
     <!-- 3) Add dynamic inline styling to the below paragraph and let the user enter a background-color -->
     <input type="text" />
-    <p>Style me inline!</p>
+    <p :style="{isToggled}">Style me inline!</p>
   </section>
 </body>
 
