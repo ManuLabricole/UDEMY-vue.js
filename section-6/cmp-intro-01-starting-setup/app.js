@@ -23,4 +23,7 @@ const app = Vue.createApp({
     }
 });
 
+app.component('friend-contact', {
+    tem
+
 app.mount('#app');
