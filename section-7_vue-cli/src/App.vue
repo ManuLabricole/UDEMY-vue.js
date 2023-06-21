@@ -1,0 +1,30 @@
+<template>
+        <h2>My friends</h2>
+        <ul>
+            <friend-contact></friend-contact>
+            <friend-contact></friend-contact>
+        </ul>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            friends: [
+                {
+                    id: 'manuel',
+                    name: 'Manuel LaTlouelle',
+                    phone: '0566272836',
+                    email: 'manueél_latlouelle@gmail.com'
+                },
+                {
+                    id: 'manuel',
+                    name: 'Manuel LaTlouelle',
+                    phone: '0566272836',
+                    email: 'manueél_latlouelle@gmail.com'
+                }
+            ]
+        }
+    },
+};
+</script>
