@@ -26,6 +26,7 @@ header {
   margin: 0;
   padding: 0;
   list-style: none;
+  transition: 1s;
 }
 
 #app li {
@@ -60,4 +61,15 @@ header {
   background-color: #ec3169;
   border-color: #ec3169;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.slide-enter,
+.slide-leave-to {
+  opacity: 0;
+  transform: translateY(-100%);
 }

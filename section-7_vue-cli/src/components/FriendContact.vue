@@ -1,27 +1,23 @@
 <template>
     <li>
-        <h2>{{ friends.name }}</h2>
+        <h2>{{ name }} {{ isFavorite ? '(Favorite)' : "" }}</h2>
         <button @click="toggleDetails">Show Details</button>
-        <ul v-if="detailsAreVisible">
-            <li><strong>Phone : </strong> {{ friends.phone }}</li>
-            <li><strong>Email : </strong>{{ friends.email }}</li>
-        </ul>
+        <transition name="slide">
+            <ul v-if="detailsAreVisible">
+                <li><strong>Phone : </strong> {{ phoneNumber }}</li>
+                <li><strong>Email : </strong>{{ emailAddress }}</li>
+            </ul>
+        </transition>
+
     </li>
 </template>
 
 <script>
 export default {
+    props: ['name', 'phoneNumber', 'emailAddress', 'isFavorite'],
     data() {
         return {
             detailsAreVisible: false,
-            friends: 
-                {
-                    id: 'manuel',
-                    name: 'Manuel LaTlouelle',
-                    phone: '0566272836',
-                    email: 'manuel'
-                }
-            
         }
     },
     methods: {
