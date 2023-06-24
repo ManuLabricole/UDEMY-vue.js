@@ -8,6 +8,7 @@
                 :phone-number="friend.phone"
                 :email-address="friend.email"
                 :is-favorite="friend.isFavorite"
+                @toggle-favorite="toggleFavoriteStatus(friend.id)"
             ></friend-contact>
         </ul>
 </template>
@@ -33,6 +34,14 @@ export default {
                     isFavorite: false
                 }
             ]
+        }
+    },
+    methods: {
+        toggleFavoriteStatus(friendId) {
+            const friend = this.friends.find(friend => friend.id === friendId);
+            friend.isFavorite = !friend.isFavorite;
+            console.log(friend.name);
+            console.log(friend.isFavorite);
         }
     },
 };
