@@ -1,6 +1,12 @@
-import './assets/main.css'
+import ActiveUser from './components/ActiveUser.vue'
+import UserData from './components/UserData.vue'
 
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+
+app.component('active-user', ActiveUser)
+app.component('user-data', UserData)
+
+app.mount('#app')
