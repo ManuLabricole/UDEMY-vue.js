@@ -9,7 +9,7 @@
                 <li><strong>Email : </strong>{{ emailAddress }}</li>
             </ul>
         </transition>
-
+        <button @click="deleteFriend">Delete</button>
     </li>
 </template>
 
@@ -46,7 +46,15 @@ export default {
             } else {
                 console.warn('No friend id provided!');
             }
-        }
+        },
+        'delete-friend': function(friendId) {
+            if (friendId) {
+                console.log(friendId);
+                return true;
+            } else {
+                console.warn('No friend id provided!');
+            }
+        },
     },
     data() {
         return {
@@ -59,7 +67,10 @@ export default {
         },
         toggleFavorite() {
             this.$emit('toggle-favorite', this.id, this.name, this.isFavorite);
-        }
+        },
+        deleteFriend() {
+            this.$emit('delete-friend', this.id);
+        },
     },
 };
 </script>

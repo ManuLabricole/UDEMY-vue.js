@@ -11,9 +11,9 @@
             :email-address="friend.email"
             :is-favorite="friend.isFavorite"
             @toggle-favorite="toggleFavoriteStatus"
+            @delete-friend="deleteFriend"
         ></friend-contact>
     </ul>
-    
 </template>
 
 <script>
@@ -60,6 +60,10 @@ export default {
             else {
                 alert('Data received are wrong');
             }
+        },
+        deleteFriend(friendId) {
+            const friendIndex = this.friends.findIndex(friend => friend.id === friendId);
+            this.friends.splice(friendIndex, 1);
         }
     },
 };
