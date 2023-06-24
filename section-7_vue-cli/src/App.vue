@@ -1,6 +1,6 @@
 <template>
     <h2>My friends</h2>
-    <new-friend></new-friend>
+    <new-friend @add-friend="addFriend"></new-friend>
     <ul>
         <friend-contact
             v-for="friend in friends"
@@ -13,6 +13,7 @@
             @toggle-favorite="toggleFavoriteStatus"
         ></friend-contact>
     </ul>
+    
 </template>
 
 <script>
@@ -43,6 +44,22 @@ export default {
             const friend = this.friends.find(friend => friend.id === friendId);
             friend.isFavorite = !friend.isFavorite;
             console.log(friendId, friendName, friendIsFavorite);
+        },
+        addFriend(friendData) {
+            const newFriend = {
+                id: new Date().toISOString(),
+                name: friendData.AdibouName,
+                phone: friendData.phone,
+                email: friendData.email,
+                isFavorite: false
+            };
+            if (newFriend.name && newFriend.phone && newFriend.email) {
+                this.friends.unshift(newFriend);
+                console.log(newFriend);
+            }
+            else {
+                alert('Data received are wrong');
+            }
         }
     },
 };
