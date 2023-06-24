@@ -1,16 +1,18 @@
 <template>
-        <h2>My friends</h2>
-        <ul>
-            <friend-contact
-                v-for="friend in friends"
-                :key="friend.id"
-                :name="friend.name"
-                :phone-number="friend.phone"
-                :email-address="friend.email"
-                :is-favorite="friend.isFavorite"
-                @toggle-favorite="toggleFavoriteStatus(friend.id)"
-            ></friend-contact>
-        </ul>
+    <h2>My friends</h2>
+    <new-friend></new-friend>
+    <ul>
+        <friend-contact
+            v-for="friend in friends"
+            :key="friend.id"
+            :id="friend.id"
+            :name="friend.name"
+            :phone-number="friend.phone"
+            :email-address="friend.email"
+            :is-favorite="friend.isFavorite"
+            @toggle-favorite="toggleFavoriteStatus"
+        ></friend-contact>
+    </ul>
 </template>
 
 <script>
@@ -20,15 +22,15 @@ export default {
         return {
             friends: [
                 {
-                    id: 'manuel',
+                    id: 'Idbh2982376biejdededfUUID',
                     name: 'Manuel LaTlouelle',
                     phone: '0566272836',
                     email: 'manueél_latlouelle@gmail.com',
                     isFavorite: true
                 },
                 {
-                    id: 'Julie',
-                    name: 'Lawrence',
+                    id: 'KJbedjneder666538ehjjUUID',
+                    name: 'Julie Lawrence',
                     phone: '056eff72836',
                     email: 'julier@gmail.com',
                     isFavorite: false
@@ -37,11 +39,10 @@ export default {
         }
     },
     methods: {
-        toggleFavoriteStatus(friendId) {
+        toggleFavoriteStatus(friendId, friendName, friendIsFavorite) {
             const friend = this.friends.find(friend => friend.id === friendId);
             friend.isFavorite = !friend.isFavorite;
-            console.log(friend.name);
-            console.log(friend.isFavorite);
+            console.log(friendId, friendName, friendIsFavorite);
         }
     },
 };
