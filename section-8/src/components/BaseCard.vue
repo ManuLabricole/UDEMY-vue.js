@@ -1,6 +1,6 @@
 <template>
     <div>
-        <slots></slots>
+        <slot></slot>
     </div>
 </template>
 
@@ -10,7 +10,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 div {
   margin: 2rem auto;
   max-width: 30rem;
