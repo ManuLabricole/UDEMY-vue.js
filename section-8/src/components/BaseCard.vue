@@ -1,6 +1,9 @@
 <template>
     <div>
-        <slot></slot>
+      <header>
+        <slot name="header"></slot>
+      </header>
+      <slot></slot>
     </div>
 </template>
 
