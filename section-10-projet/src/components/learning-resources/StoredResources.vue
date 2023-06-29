@@ -1,20 +1,26 @@
 <template>
-    <div>
-        <ul>
-            <learning-resource v-for="resource in storedResources" :key="resource.id" :resource="resource"></learning-resource>
-        </ul>
-    </div>
+  <div>
+    <ul>
+      // eslint-disable-next-line max-len
+      <learning-resource
+        v-for="resource in storedResources"
+        :key="resource.id"
+        :resource="resource"
+      ></learning-resource>
+    </ul>
+  </div>
 </template>
 
 <script>
-import LearningResource from "./LearningResource.vue";
+import LearningResource from './LearningResource.vue';
+
 export default {
-    name: "StoredResources",
-    components: {
-        LearningResource,
-    },
-    props: ['storedResources'],
-}
+  name: 'StoredResources',
+  components: {
+    LearningResource,
+  },
+  props: ['storedResources'],
+};
 </script>
 
 <style scoped>

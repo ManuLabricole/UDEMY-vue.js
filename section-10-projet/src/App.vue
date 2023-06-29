@@ -3,10 +3,10 @@
 </template>
 
 <script>
-import StoredResources from "./components/learning-resources/StoredResources.vue";
+import StoredResources from './components/learning-resources/StoredResources.vue';
 
 export default {
-  name: "App",
+  name: 'App',
 
   components: {
     StoredResources,
@@ -17,17 +17,17 @@ export default {
       storedResources: [
         {
           id: 1,
-          title: "Officiel Doc",
-          description: "Vue.js - The Progressive JavaScript Framework",
-          link: "https://vuejs.org/",
-          icon: "school",
+          title: 'Officiel Doc',
+          description: 'Vue.js - The Progressive JavaScript Framework',
+          link: 'https://vuejs.org/',
+          icon: 'school',
         },
         {
           id: 2,
-          title: "Google",
-          description: "Google",
-          link: "https://www.google.com/",
-          icon: "book",
+          title: 'Google',
+          description: 'Google',
+          link: 'https://www.google.com/',
+          icon: 'book',
         },
       ],
     };
