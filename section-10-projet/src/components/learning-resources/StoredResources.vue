@@ -1,7 +1,6 @@
 <template>
   <div>
     <ul>
-      // eslint-disable-next-line max-len
       <learning-resource
         v-for="resource in storedResources"
         :key="resource.id"
