@@ -4,7 +4,7 @@
       <header>
         <h3>{{ resource.title }}</h3>
         <!-- <button>Delete</button> -->
-        <base-button mode="flat" @delete-resource="deleteResource">Delete</base-button>
+        <base-button mode="flat" @click="deleteResource">Delete</base-button>
       </header>
       <p>{{ resource.description }}</p>
       <nav>

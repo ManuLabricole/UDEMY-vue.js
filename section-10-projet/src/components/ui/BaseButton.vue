@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button :type="type" :class="mode" @click="buttonClick">
+    <button :type="type" :class="mode">
       <slot></slot>
     </button>
   </div>
@@ -21,12 +21,6 @@ export default {
   },
   data() {
     return {};
-  },
-  emits: ['delete-resource'],
-  methods: {
-    buttonClick() {
-      this.$emit('delete-resource');
-    },
   },
 };
 </script>
