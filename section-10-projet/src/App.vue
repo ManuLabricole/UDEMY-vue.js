@@ -1,5 +1,5 @@
 <template>
-  <the-header></the-header>
+  <the-header :title=title></the-header>
   <stored-resources :stored-resources="storedResources"></stored-resources>
 </template>
 
@@ -33,6 +33,7 @@ export default {
           icon: 'book',
         },
       ],
+      title: 'Remember Vue.js',
     };
   },
 };
