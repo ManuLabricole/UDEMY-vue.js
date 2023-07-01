@@ -5,8 +5,7 @@
         <h3>{{ resource.title }}</h3>
         <!-- <button>Delete</button> -->
         <div>
-          <base-button mode="flat" @click="deleteResource">Delete</base-button>
-          <base-button mode="flat" @click="modifyResource">Modify</base-button>
+          <base-button mode="flat" @click="deleteResource(resource.id)">Delete</base-button>
         </div>
       </header>
       <p>{{ resource.description }}</p>
@@ -26,18 +25,7 @@ export default {
   components: {
     BaseButton,
   },
-  methods: {
-    deleteResource() {
-      const { id } = this.resource;
-      const index = this.$parent.storedResources.findIndex(
-        (resource) => resource.id === id,
-      );
-      this.$parent.storedResources.splice(index, 1);
-    },
-    modifyResource() {
-      console.log('Modify resource');
-    },
-  },
+  inject: ['deleteResource'],
 };
 </script>
 

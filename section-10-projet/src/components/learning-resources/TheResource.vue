@@ -55,6 +55,7 @@ export default {
     return {
       resources: this.storedResources,
       addResource: this.addResource,
+      deleteResource: this.deleteResource,
     };
   },
   computed: {
@@ -79,6 +80,10 @@ export default {
         icon: 'book',
       });
       this.selectedTab = 'stored-resources';
+    },
+    deleteResource(id) {
+      const index = this.storedResources.findIndex((resource) => resource.id === id);
+      this.storedResourcesg.splice(index, 1);
     },
   },
 };
