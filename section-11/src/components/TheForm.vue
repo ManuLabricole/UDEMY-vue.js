@@ -52,6 +52,12 @@
   </form>
 </template>
 
+<script>
+export default {
+  name: "TheForm",
+};
+</script>
+
 <style scoped>
 form {
   margin: 2rem auto;
@@ -87,15 +93,15 @@ select {
   width: auto;
 }
 
-input[type='checkbox'],
-input[type='radio'] {
+input[type="checkbox"],
+input[type="radio"] {
   display: inline-block;
   width: auto;
   margin-right: 1rem;
 }
 
-input[type='checkbox'] + label,
-input[type='radio'] + label {
+input[type="checkbox"] + label,
+input[type="radio"] + label {
   font-weight: normal;
 }
 
