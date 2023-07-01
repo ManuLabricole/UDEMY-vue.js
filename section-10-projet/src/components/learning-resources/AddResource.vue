@@ -1,30 +1,41 @@
 <template>
-    <base-card>
-      <form action="">
-        <div class="form-control">
-          <label for="input-title">Title</label>
-          <input id="input-title" type="text" placeholder="..." ref="inputTitle" />
-        </div>
-        <div class="form-control">
-          <label for="input-description">Description</label>
-          <textarea id="input-description" placeholder="..." ref="inputDescription" rows="3"/>
-        </div>
-        <div class="form-control">
-          <label for="input-link"></label>
-          <input id="input-link" type="url" placeholder="..." ref="inputLink"/>
-        </div>
-        <div>
-          <base-button type="submit" @click="saveData">Add Resource</base-button>
-        </div>
-      </form>
-    </base-card>
+  <base-dialog title="Invalid inputs" v-if="isFormInvalid" @close="confirmError">
+    <template v-slot:message>
+      <p>Invalude inputs !! </p>
+      <p>Please, make sur that there are not empty inputs</p>
+    </template>
+    <template v-slot:actions>
+      <base-button @click="confirmError">Close</base-button>
+    </template>
+  </base-dialog>
+  <base-card>
+    <form @submit.prevent="saveData">
+      <div class="form-control">
+        <label for="input-title">Title</label>
+        <input id="input-title" type="text" placeholder="..." ref="inputTitle" />
+      </div>
+      <div class="form-control">
+        <label for="input-description">Description</label>
+        <textarea id="input-description" placeholder="..." ref="inputDescription" rows="3"/>
+      </div>
+      <div class="form-control">
+        <label for="input-link"></label>
+        <input id="input-link" type="url" placeholder="..." ref="inputLink"/>
+      </div>
+      <div>
+        <base-button type="submit">Add Resource</base-button>
+      </div>
+    </form>
+  </base-card>
 </template>
 
 <script>
 export default {
   name: 'AddResource',
   data() {
-    return {};
+    return {
+      isFormInvalid: false,
+    };
   },
   inject: ['addResource'],
   methods: {
@@ -36,7 +47,7 @@ export default {
       if (
         title.trim() === '' || description.trim() === '' || link.trim() === ''
       ) {
-        alert('Please enter valid values!');
+        this.isFormInvalid = true;
         return;
       }
 
@@ -45,6 +56,9 @@ export default {
         description,
         link,
       );
+    },
+    confirmError() {
+      this.isFormInvalid = false;
     },
   },
 };

@@ -34,6 +34,9 @@ export default {
       );
       this.$parent.storedResources.splice(index, 1);
     },
+    modifyResource() {
+      console.log('Modify resource');
+    },
   },
 };
 </script>
