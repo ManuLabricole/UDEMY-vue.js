@@ -33,6 +33,13 @@ export default {
       const description = this.$refs.inputDescription.value;
       const link = this.$refs.inputLink.value;
 
+      if (
+        title.trim() === '' || description.trim() === '' || link.trim() === ''
+      ) {
+        alert('Please enter valid values!');
+        return;
+      }
+
       this.addResource(
         title,
         description,
