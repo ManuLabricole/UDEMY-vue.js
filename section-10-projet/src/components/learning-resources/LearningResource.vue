@@ -3,7 +3,8 @@
     <base-card>
       <header>
         <h3>{{ resource.title }}</h3>
-        <button>Delete</button>
+        <!-- <button>Delete</button> -->
+        <base-button mode="flat" @delete-resource="deleteResource">Delete</base-button>
       </header>
       <p>{{ resource.description }}</p>
       <nav>
@@ -14,9 +15,23 @@
 </template>
 
 <script>
+import BaseButton from '../ui/BaseButton.vue';
 
 export default {
+  name: 'LearningResource',
   props: ['resource'],
+  components: {
+    BaseButton,
+  },
+  methods: {
+    deleteResource() {
+      const { id } = this.resource;
+      const index = this.$parent.storedResources.findIndex(
+        (resource) => resource.id === id,
+      );
+      this.$parent.storedResources.splice(index, 1);
+    },
+  },
 };
 </script>
 
