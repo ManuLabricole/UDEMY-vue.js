@@ -4,7 +4,10 @@
       <header>
         <h3>{{ resource.title }}</h3>
         <!-- <button>Delete</button> -->
-        <base-button mode="flat" @click="deleteResource">Delete</base-button>
+        <div>
+          <base-button mode="flat" @click="deleteResource">Delete</base-button>
+          <base-button mode="flat" @click="modifyResource">Modify</base-button>
+        </div>
       </header>
       <p>{{ resource.description }}</p>
       <nav>
