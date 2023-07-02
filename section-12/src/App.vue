@@ -14,7 +14,23 @@ export default {
   },
   data() {
     return {
-      savedSurveyResults: [],
+      savedSurveyResults: [
+        {
+          id: '1',
+          name: 'Max',
+          rating: 'great',
+        },
+        {
+          id: '2',
+          name: 'Anna',
+          rating: 'average',
+        },
+        {
+          id: '3',
+          name: 'Manu',
+          rating: 'poor',
+        },
+      ],
     };
   },
   methods: {
@@ -24,7 +40,7 @@ export default {
         rating: surveyData.rating,
         id: new Date().toISOString(),
       };
-      this.savedSurveyResults.push(surveyResult);
+      this.savedSurveyResults.unshift(surveyResult);
       console.log(surveyResult);
     },
   },
