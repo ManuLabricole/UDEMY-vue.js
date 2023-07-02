@@ -68,7 +68,7 @@
     </div>
     <div class="form-control">
       <h2>Rate this course</h2>
-      <RatingControl />
+      <RatingControl v-model="rating"/>
     </div>
     <div>
       <button>Save Data</button>
@@ -92,6 +92,7 @@ export default {
       newOption: '',
       interest: [],
       how: null,
+      rating: null,
 
       options: [
         { value: 'bike', text: 'bike' },
@@ -102,13 +103,16 @@ export default {
   },
   methods: {
     submitForm() {
-      // console.log('username: ', this.userName);
-      // this.userName = '';
-      // console.log('userAge: ', this.userAge);
-      // console.log('ageInput: ', this.$refs.ageInput.value + 5);
-      // console.log(33);
-      // console.log('referrer: ', this.referrer);
+      console.log('username: ', this.userName);
+      this.userName = '';
+      console.log('userAge: ', this.userAge);
+      console.log('ageInput: ', this.$refs.ageInput.value + 5);
+      console.log(33);
+      console.log('referrer: ', this.referrer);
       console.log('interest: ', this.interest);
+      console.log('how: ', this.how);
+      console.log('rating: ', this.rating);
+      this.rating = null;
     },
 
     addReferrerOption() {

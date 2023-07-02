@@ -2,7 +2,7 @@
   <ul>
     <li>
       <button
-        :class="{ active: activeButton === 'poor' }"
+        :class="{ active: modelValue === 'poor' }"
         type="button"
         @click="setActiveButton('poor')"
       >
@@ -11,7 +11,7 @@
     </li>
     <li>
       <button
-        :class="{ active: activeButton === 'average' }"
+        :class="{ active: modelValue === 'average' }"
         type="button"
         @click="setActiveButton('average')"
       >
@@ -20,7 +20,7 @@
     </li>
     <li>
       <button
-        :class="{ active: activeButton === 'great' }"
+        :class="{ active: modelValue === 'great' }"
         type="button"
         @click="setActiveButton('great')"
       >
@@ -33,15 +33,12 @@
 <script>
 export default {
   name: 'RatingControl',
-  data() {
-    return {
-      activeButton: null,
-    };
-  },
+  props: ['modelValue'], // [modelValue] is the default prop name for v-model
+  emits: ['update:modelValue'],
   methods: {
     setActiveButton(button) {
       this.activeButton = button;
-      console.log('activeButton: ', this.activeButton);
+      this.$emit('update:modelValue', button);
     },
   },
 };
