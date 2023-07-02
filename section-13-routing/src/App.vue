@@ -15,9 +15,9 @@ export default {
   data() {
     return {
       teams: [
-        { id: 't1', name: 'Frontend Engineers', members: ['u1', 'u2'] },
-        { id: 't2', name: 'Backend Engineers', members: ['u1', 'u2', 'u3'] },
-        { id: 't3', name: 'Client Consulting', members: ['u4', 'u5'] },
+        { id: 'team-1', name: 'Frontend Engineers', members: ['u1', 'u2'] },
+        { id: 'team-2', name: 'Backend Engineers', members: ['u1', 'u2', 'u3'] },
+        { id: 'team-3', name: 'Client Consulting', members: ['u4', 'u5'] },
       ],
       users: [
         { id: 'u1', fullName: 'Max Schwarz', role: 'Engineer' },

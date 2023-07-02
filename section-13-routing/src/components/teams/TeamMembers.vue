@@ -19,14 +19,22 @@ export default {
   components: {
     UserItem,
   },
+  inject: ['users', 'teams'],
   data() {
     return {
-      teamName: 'Test',
-      members: [
-        { id: 'u1', fullName: 'Max Schwarz', role: 'Engineer' },
-        { id: 'u2', fullName: 'Max Schwarz', role: 'Engineer' },
-      ],
+      members: [],
+      teamName: '',
     };
+  },
+  created() {
+    console.log(this.members);
+    // Note that we use .teamId here because we named the parameter in the route  in main.js
+    const { teamId } = this.$route.params;
+    const selectedTeam = this.teams.find((team) => team.id === teamId);
+    // eslint-disable-next-line max-len
+    const members = selectedTeam.members.map((memberId) => this.users.find((user) => user.id === memberId));
+    this.members = members;
+    this.teamName = selectedTeam.name;
   },
 };
 </script>
