@@ -11,10 +11,21 @@ const router = createRouter({
 
   history: createWebHistory(),
   routes: [
-    { path: '/teams', component: TeamsList },
+    { path: '/', redirect: '/teams' },
+    {
+      path: '/teams',
+      component: TeamsList,
+      children: [
+        { path: ':teamId', component: TeamMembers, props: true },
+      // { path: '/teams/:teamId/:memberId', component: UserList },
+      // { path: '/teams/:teamId/:memberId/:userId', component: UserDetail },
+      ],
+    },
     { path: '/users', component: UsersList },
     // What if we want to pass dynamic data to the route?
-    { path: '/teams/:teamId', component: TeamMembers, props: true },
+    // We can advoid to always use $route to get the data
+    // but there is a better way to do it : props
+    { path: '/:notFound(.*)', redirect: '/teams' },
   ],
   linkActiveClass: 'active',
 });
