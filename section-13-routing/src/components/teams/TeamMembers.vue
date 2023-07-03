@@ -21,34 +21,38 @@ export default {
     UserItem,
   },
   inject: ['users', 'teams'],
+  props: {
+    teamId: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
       members: [],
       teamName: '',
     };
   },
-  created() {
-    // Note that we use .teamId here because we named the parameter in the route  in main.js
-    const { teamId } = this.$route.params;
-    const selectedTeam = this.teams.find((team) => team.id === teamId);
-    // eslint-disable-next-line max-len
-    const members = selectedTeam.members.map((memberId) => this.users.find((user) => user.id === memberId));
-    this.members = members;
-    this.teamName = selectedTeam.name;
-  },
-  // eslint-disable-next-line max-len
-  // We need to watch the route because we need to
-  // update the members and teamName when the route changes
-  // If we don't watch the route, the members and teamName
-  // will not be updated when the route changes
-  watch: {
-    $route(to) {
-      const { teamId } = to.params;
+  methods: {
+    loadTeamMembers(teamId) {
       const selectedTeam = this.teams.find((team) => team.id === teamId);
       // eslint-disable-next-line max-len
       const members = selectedTeam.members.map((memberId) => this.users.find((user) => user.id === memberId));
       this.members = members;
       this.teamName = selectedTeam.name;
+    },
+  },
+  created() {
+    // Note that we use .teamId here because we named the parameter in the route  in main.js
+    this.loadTeamMembers(this.teamId);
+  },
+  // We need to watch the route because we need to
+  // update the members and teamName when the route changes
+  // If we don't watch the route, the members and teamName
+  // will not be updated when the route changes
+  watch: {
+    teamId(newId) {
+      this.loadTeamMembers(newId);
     },
   },
 };
