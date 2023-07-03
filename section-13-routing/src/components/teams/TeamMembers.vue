@@ -9,6 +9,7 @@
         :role="member.role"
       ></user-item>
     </ul>
+    <router-link to="team-2">Go to team2</router-link>
   </section>
 </template>
 
@@ -27,7 +28,6 @@ export default {
     };
   },
   created() {
-    console.log(this.members);
     // Note that we use .teamId here because we named the parameter in the route  in main.js
     const { teamId } = this.$route.params;
     const selectedTeam = this.teams.find((team) => team.id === teamId);
@@ -35,6 +35,21 @@ export default {
     const members = selectedTeam.members.map((memberId) => this.users.find((user) => user.id === memberId));
     this.members = members;
     this.teamName = selectedTeam.name;
+  },
+  // eslint-disable-next-line max-len
+  // We need to watch the route because we need to
+  // update the members and teamName when the route changes
+  // If we don't watch the route, the members and teamName
+  // will not be updated when the route changes
+  watch: {
+    $route(to) {
+      const { teamId } = to.params;
+      const selectedTeam = this.teams.find((team) => team.id === teamId);
+      // eslint-disable-next-line max-len
+      const members = selectedTeam.members.map((memberId) => this.users.find((user) => user.id === memberId));
+      this.members = members;
+      this.teamName = selectedTeam.name;
+    },
   },
 };
 </script>
