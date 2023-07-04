@@ -13,7 +13,7 @@ const router = createRouter({
     { path: '/', redirect: '/teams' },
     {
       path: '/teams',
-      component: TeamsList,
+      components: { default: TeamsList, footer: UsersList },
       children: [
         {
           name: 'team-members',
