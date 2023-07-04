@@ -8,7 +8,6 @@ import UsersList from './components/users/UsersList.vue';
 import TeamMembers from './components/teams/TeamMembers.vue';
 
 const router = createRouter({
-
   history: createWebHistory(),
   routes: [
     { path: '/', redirect: '/teams' },
@@ -16,9 +15,14 @@ const router = createRouter({
       path: '/teams',
       component: TeamsList,
       children: [
-        { path: ':teamId', component: TeamMembers, props: true },
-      // { path: '/teams/:teamId/:memberId', component: UserList },
-      // { path: '/teams/:teamId/:memberId/:userId', component: UserDetail },
+        {
+          name: 'team-members',
+          path: ':teamId',
+          component: TeamMembers,
+          props: true,
+        },
+        // { path: '/teams/:teamId/:memberId', component: UserList },
+        // { path: '/teams/:teamId/:memberId/:userId', component: UserDetail },
       ],
     },
     { path: '/users', component: UsersList },
