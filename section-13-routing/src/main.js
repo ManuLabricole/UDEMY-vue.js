@@ -6,6 +6,8 @@ import App from './App.vue';
 import TeamsList from './components/teams/TeamsList.vue';
 import UsersList from './components/users/UsersList.vue';
 import TeamMembers from './components/teams/TeamMembers.vue';
+import UserFooter from './components/users/UserFooter.vue';
+import TeamFooter from './components/teams/TeamFooter.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -13,7 +15,7 @@ const router = createRouter({
     { path: '/', redirect: '/teams' },
     {
       path: '/teams',
-      components: { default: TeamsList, footer: UsersList },
+      components: { default: TeamsList, footer: TeamFooter },
       children: [
         {
           name: 'team-members',
@@ -21,17 +23,31 @@ const router = createRouter({
           component: TeamMembers,
           props: true,
         },
-        // { path: '/teams/:teamId/:memberId', component: UserList },
-        // { path: '/teams/:teamId/:memberId/:userId', component: UserDetail },
       ],
     },
-    { path: '/users', component: UsersList },
+    {
+      path: '/users',
+      components: { default: UsersList, footer: UserFooter },
+      beforeEnter(to, from, next) {
+        console.log('users beforeEnter');
+        console.log('To: ', to);
+        console.log('From: ', from);
+        next();
+      },
+    },
     // What if we want to pass dynamic data to the route?
     // We can advoid to always use $route to get the data
-    // but there is a better way to do it : props
+    // but there is a better way to do it : props = true
     { path: '/:notFound(.*)', redirect: '/teams' },
   ],
   linkActiveClass: 'active',
+  scrollBehavior(_, _2, savedPosition) {
+    // console.log(to, from, savedPosition);
+    if (savedPosition) {
+      return savedPosition;
+    }
+    return { left: 0, top: 0 };
+  }
 });
 
 const app = createApp(App);
