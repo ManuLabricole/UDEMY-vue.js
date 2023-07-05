@@ -19,6 +19,10 @@ export default {
     TeamsItem,
   },
   inject: ['teams'],
+  beforeRouteUpdate(to, from, next) {
+    console.log('beforeRouteUpdate() ------');
+    next();
+  },
 };
 </script>
 
