@@ -15,6 +15,7 @@ const router = createRouter({
     { path: '/', redirect: '/teams' },
     {
       path: '/teams',
+      meta: { title: 'Users List' },
       components: { default: TeamsList, footer: TeamFooter },
       children: [
         {
@@ -27,6 +28,7 @@ const router = createRouter({
     },
     {
       path: '/users',
+      meta: { title: 'Users List' },
       components: { default: UsersList, footer: UserFooter },
       // beforeEnter(to, from, next) {
       //   console.log('users beforeEnter');
@@ -48,7 +50,6 @@ const router = createRouter({
     }
     return { left: 0, top: 0 };
   },
-
 });
 
 router.beforeEach((to, from, next) => {

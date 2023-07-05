@@ -41,8 +41,9 @@ export default {
   updated() {
     console.log('updated()');
   },
-  beforeRouteEnter(to, from, next) {
+  beforeRouteEnter(to, _2, next) {
     console.log('beforeRouteEnter() ------');
+    console.log(to.meta.title);
     next();
   },
 };
