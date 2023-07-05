@@ -28,12 +28,12 @@ const router = createRouter({
     {
       path: '/users',
       components: { default: UsersList, footer: UserFooter },
-      beforeEnter(to, from, next) {
-        console.log('users beforeEnter');
-        console.log('To: ', to);
-        console.log('From: ', from);
-        next();
-      },
+      // beforeEnter(to, from, next) {
+      //   console.log('users beforeEnter');
+      //   console.log('To: ', to);
+      //   console.log('From: ', from);
+      //   next();
+      // },
     },
     // What if we want to pass dynamic data to the route?
     // We can advoid to always use $route to get the data
@@ -47,7 +47,15 @@ const router = createRouter({
       return savedPosition;
     }
     return { left: 0, top: 0 };
-  }
+  },
+
+});
+
+router.beforeEach((to, from, next) => {
+  console.log('Global beforeEach');
+  console.log('To: ', to);
+  console.log('From: ', from);
+  next();
 });
 
 const app = createApp(App);
